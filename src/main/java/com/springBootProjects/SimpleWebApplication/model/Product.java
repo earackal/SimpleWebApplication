@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -19,9 +20,10 @@ public class Product {
     private String name;
     private String description;
     private String brand;
-    private int price;
+    private BigDecimal price;
     private String category;
     private Date releaseDate;
+    private boolean productAvailable;
     private int stockQuantity;
     private String imageName;
     private String imageType;
