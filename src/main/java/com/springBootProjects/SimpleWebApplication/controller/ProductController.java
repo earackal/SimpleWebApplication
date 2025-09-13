@@ -4,6 +4,7 @@ import com.springBootProjects.SimpleWebApplication.model.Product;
 import com.springBootProjects.SimpleWebApplication.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,6 +36,19 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/product/{id}/image")
+    public ResponseEntity<?> getImageById(@PathVariable int id) {
+        Product product = service.getProductById(id);
+        if (product == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            String imageType = product.getImageType();
+            byte[] imageData = product.getImageData();
+            //return ResponseEntity.ok().contentType(MediaType.valueOf(imageType)).body(imageData);
+            return new ResponseEntity<>(imageData, HttpStatus.OK);
+        }
+    }
+
     @PostMapping("/product")
     public ResponseEntity<?> addProduct(@RequestPart Product product, @RequestPart MultipartFile imageFile){
         try {
@@ -45,6 +59,8 @@ public class ProductController {
         }
 
     }
+
+
 
 
 }
