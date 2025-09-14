@@ -4,13 +4,11 @@ import com.springBootProjects.SimpleWebApplication.model.Product;
 import com.springBootProjects.SimpleWebApplication.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -42,9 +40,7 @@ public class ProductController {
         if (product == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            String imageType = product.getImageType();
             byte[] imageData = product.getImageData();
-            //return ResponseEntity.ok().contentType(MediaType.valueOf(imageType)).body(imageData);
             return new ResponseEntity<>(imageData, HttpStatus.OK);
         }
     }
@@ -56,6 +52,33 @@ public class ProductController {
             return new ResponseEntity<>(addedProduct, HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+    @PutMapping("/product/{id}")
+    public ResponseEntity<?> updateProduct(@PathVariable int id, @RequestPart Product product, @RequestPart MultipartFile imageFile) {
+        Product updatedProduct;
+        try {
+            updatedProduct = service.updateProduct(id, product, imageFile);
+        } catch (IOException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
+        if (updatedProduct == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+        }
+    }
+
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable int id) {
+        Product p = service.deleteProduct(id);
+        if (p == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(p, HttpStatus.OK);
         }
 
     }

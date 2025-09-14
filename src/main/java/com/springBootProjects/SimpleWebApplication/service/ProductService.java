@@ -33,4 +33,26 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    public Product updateProduct(int id, Product product, MultipartFile imageFile) throws IOException {
+        // 1. Check whether id is correct
+        // 2. Check whether an entry with the provided id exists
+        // If not, don't insert it.
+        Product p = this.getProductById(id);
+        if (product.getId() != id || p == null) {
+            return null;
+        }
+
+        product.setImageName(imageFile.getOriginalFilename());
+        product.setImageType(imageFile.getContentType());
+        product.setImageData(imageFile.getBytes());
+
+        return productRepository.save(product);
+    }
+
+    public Product deleteProduct(int id) {
+        Product p = this.getProductById(id);
+        productRepository.deleteById(id);
+        return p;
+    }
+
 }
