@@ -34,7 +34,7 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/product/{id}/image")
+    /*@GetMapping("/product/{id}/image")
     public ResponseEntity<?> getImageById(@PathVariable int id) {
         Product product = service.getProductById(id);
         if (product == null) {
@@ -43,12 +43,12 @@ public class ProductController {
             byte[] imageData = product.getImageData();
             return new ResponseEntity<>(imageData, HttpStatus.OK);
         }
-    }
+    }*/
 
     @PostMapping("/product")
-    public ResponseEntity<?> addProduct(@RequestPart Product product, @RequestPart MultipartFile imageFile){
+    public ResponseEntity<?> addProduct(@RequestBody Product product){
         try {
-            Product addedProduct = service.addProduct(product, imageFile);
+            Product addedProduct = service.addProduct(product);
             return new ResponseEntity<>(addedProduct, HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -57,10 +57,10 @@ public class ProductController {
     }
 
     @PutMapping("/product/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable int id, @RequestPart Product product, @RequestPart MultipartFile imageFile) {
+    public ResponseEntity<?> updateProduct(@PathVariable int id, @RequestBody Product product) {
         Product updatedProduct;
         try {
-            updatedProduct = service.updateProduct(id, product, imageFile);
+            updatedProduct = service.updateProduct(id, product);
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -82,8 +82,4 @@ public class ProductController {
         }
 
     }
-
-
-
-
 }

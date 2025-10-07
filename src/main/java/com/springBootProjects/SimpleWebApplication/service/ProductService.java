@@ -4,6 +4,8 @@ import com.springBootProjects.SimpleWebApplication.model.Product;
 import com.springBootProjects.SimpleWebApplication.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -24,28 +26,17 @@ public class ProductService {
     }
 
 
-
-    public Product addProduct(Product product, MultipartFile imageFile) throws IOException {
-        product.setImageName(imageFile.getOriginalFilename());
-        product.setImageType(imageFile.getContentType());
-        product.setImageData(imageFile.getBytes());
-
+    public Product addProduct(Product product) throws IOException {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(int id, Product product, MultipartFile imageFile) throws IOException {
+    public Product updateProduct(int id, Product product) throws IOException {
         // 1. Check whether id is correct
         // 2. Check whether an entry with the provided id exists
         // If not, don't insert it.
-        Product p = this.getProductById(id);
-        if (product.getId() != id || p == null) {
+        if (product.getId() != id || !productRepository.existsById(id)) {
             return null;
         }
-
-        product.setImageName(imageFile.getOriginalFilename());
-        product.setImageType(imageFile.getContentType());
-        product.setImageData(imageFile.getBytes());
-
         return productRepository.save(product);
     }
 
