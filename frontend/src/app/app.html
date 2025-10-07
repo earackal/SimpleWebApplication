@@ -1,0 +1,14 @@
+<header class="header" id="main-header">
+  <div class="top-bar">
+    <button class="home-btn" [routerLink]="['/']">🏠</button>
+    <button [routerLink]="['/add']">Add Product</button>
+    <button class="cart-btn">🛒</button>
+  </div>
+
+  <div class="main-bar">
+    <div class="logo">Online Shop</div>
+    <input type="text" class="search-bar" placeholder="Suche..." />
+  </div>
+</header>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,19 @@
+<div class="product">
+    <div class="box">
+        <img class="thumbnail" [src]="product.imageUrl">
+    </div>
+    
+    <div>          
+        <p class="price">
+            <u>{{product.price}}</u>
+        </p>
+        <p class="name">{{product.name}}</p>
+        @if(product.productAvailable){
+            <p class="available">
+                <span style="font-size: 12px;">&#x1F7E2;</span> Verfügbar
+            </p>
+        }
+        
+        
+    </div>    
+</div>

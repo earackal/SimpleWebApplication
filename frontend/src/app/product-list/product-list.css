@@ -1,0 +1,34 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 400px); 
+  gap: 1rem; /* spacing between items */
+  padding: 1rem;
+  margin-top: 200px;
+  justify-content: center;
+}
+
+.product-button {
+  border: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 0;
+  cursor: pointer;
+  width: 400px;
+  text-align: inherit; /* keep inner layout */
+  height: 400px;
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-align: left;
+  transition: box-shadow 0.15s;
+}
+
+.product-button:hover{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-button:active{
+  background-color: rgb(239, 239, 239);
+}

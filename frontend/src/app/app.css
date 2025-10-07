@@ -1,0 +1,96 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Top bar with smaller buttons */
+.top-bar {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.5rem;
+  background-color: white;
+  transition: opacity 0.3s, height 0.3s;
+}
+
+/* Main bar with logo + search + cart */
+.main-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  padding-bottom: 20px;
+  gap: 1rem;
+}
+
+/* Logo stays on the left */
+.logo {
+  justify-self: start;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+/* Center container trick */
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Search bar styling */
+.search-bar {
+  grid-column: 2;
+  width: 400px;
+  justify-self: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+
+@media (max-width: 800px) {
+  .main-bar {
+    grid-template-columns: 1fr;
+  }
+  .logo {
+    justify-self: center;
+  }
+  .search-bar {
+    grid-column: 1;
+    max-width: minmax(100%, 250px);
+  }
+}
+
+.cart-btn {
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.home-btn {
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Collapsed state (after scroll) */
+.header.shrink .top-bar {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.header.shrink .main-bar {
+  padding: 0.3rem 2rem;
+  padding-bottom: 20px;
+}
