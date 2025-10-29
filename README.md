@@ -8,10 +8,10 @@ The application is designed as a simple online marketplace. Authenticated users 
 
 ## 🧩 Tech Stack
 
-* **Frontend:** [Angular]
-* **Backend:** [Spring Boot]
-* **Database:** [PostgreSQL]
-* **Authentication:** [Spring Security]
+* **Frontend:** Angular
+* **Backend:** Spring Boot
+* **Database:** PostgreSQL
+* **Authentication:** Spring Security
 
 ## ⚙️ Features
 
