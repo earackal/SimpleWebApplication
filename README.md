@@ -33,6 +33,10 @@ The application is designed as a simple online marketplace. Authenticated users 
 * Implement product categories and search filters
 * Improve UI with advanced Angular components
 
+## Current Images
+<img width="1905" height="818" alt="image" src="https://github.com/user-attachments/assets/6b735041-e6ec-443e-aab1-cdeb834588dd" />
+
+
 ## 📄 License
 
 This project is for personal and educational purposes.
