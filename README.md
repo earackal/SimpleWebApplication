@@ -34,7 +34,11 @@ The application is designed as a simple online marketplace. Authenticated users 
 * Improve UI with advanced Angular components
 
 ## Current Images
-<img width="1905" height="818" alt="image" src="https://github.com/user-attachments/assets/6b735041-e6ec-443e-aab1-cdeb834588dd" />
+<img width="1902" height="912" alt="image" src="https://github.com/user-attachments/assets/2e8a21be-64a1-484b-a502-70a865c89e71" />
+<img width="1902" height="877" alt="image" src="https://github.com/user-attachments/assets/9f5c4778-cf28-4857-ad9a-193217aacb60" />
+<img width="1907" height="913" alt="image" src="https://github.com/user-attachments/assets/981cf23d-595f-4be9-8aec-38194548e5ac" />
+
+
 
 
 ## 📄 License
