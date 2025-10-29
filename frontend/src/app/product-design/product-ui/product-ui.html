@@ -3,17 +3,20 @@
         <img class="thumbnail" [src]="product.imageUrl">
     </div>
     
-    <div>          
-        <p class="price">
-            <u>{{product.price}}</u>
-        </p>
+    <div class="info">
+        <p class="price"><u>{{product.price}}</u></p> 
         <p class="name">{{product.name}}</p>
+        <p class="product-category">Category: {{ product.category }}</p>
+         
+        <p class="product-release">Released: {{ product.releaseDate | date:'mediumDate' }}</p>
         @if(product.productAvailable){
             <p class="available">
-                <span style="font-size: 12px;">&#x1F7E2;</span> Verfügbar
+                <span class="dot available-dot"></span> Verfügbar ({{ product.stockQuantity }} Stück)
+            </p>
+        } @else {
+            <p class="available out-of-stock">
+                <span class="dot out-of-stock-dot"></span> Ausverkauft
             </p>
         }
-        
-        
-    </div>    
+  </div>  
 </div>

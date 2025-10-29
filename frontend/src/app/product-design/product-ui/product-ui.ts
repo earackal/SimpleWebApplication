@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../model/product';
-import { AuthService } from '../../service/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-ui',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './product-ui.html',
   styleUrl: './product-ui.css'
 })
