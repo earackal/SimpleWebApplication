@@ -40,8 +40,6 @@ public class UserController {
     // TODO: Check whether username already exists...
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        System.out.println("Register");
-        System.out.println(user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return new ResponseEntity<>(service.register(user), HttpStatus.OK);
     }

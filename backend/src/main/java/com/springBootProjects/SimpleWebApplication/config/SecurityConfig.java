@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/login", "/api/register", "/api/products").permitAll() // allow login/register without auth
+                        .requestMatchers("/api/login", "/api/register", "/api/products", "/api/product/{id}").permitAll() // allow login/register without auth
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.disable())
