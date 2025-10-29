@@ -1,5 +1,7 @@
+import { User } from "./user";
+
 export interface Product{
-    id: number;
+    id?: number;
     name: string;
     description: string;
     brand: string;
@@ -9,4 +11,5 @@ export interface Product{
     productAvailable: boolean;
     stockQuantity: number;
     imageUrl: string;
+    user: User;
 }

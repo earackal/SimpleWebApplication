@@ -1,0 +1,9 @@
+<div class="product-grid">
+  @for(prod of products; track prod){
+    <button class="product-button" [routerLink]="['/product', prod.id]">
+      <app-product-ui [product]="prod"></app-product-ui>
+    </button>
+  } @empty{
+    <div class="empty-list">Keine Produkte zurzeit verfügbar...</div>
+  }
+</div>

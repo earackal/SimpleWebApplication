@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators, FormsModule, NgForm } from '@angula
 import { CommonModule } from '@angular/common';
 import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
+import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -12,13 +14,18 @@ import { ProductService } from '../service/product.service';
 })
 export class Add {
 
-  constructor(private productService: ProductService){}
+  constructor(private productService: ProductService, private auth: AuthService, private router: Router){}
 
   onSubmit(addForm: NgForm){
-    console.log('Hi ✅', addForm.value); // debug log
     if (addForm.valid) {
-      console.log('Form submitted ✅', addForm.value); // debug log
       const formValue = addForm.value;
+      const user = this.auth.getUser();
+      if (!user){
+        alert("Sie sind nicht eingeloggt");
+        addForm.resetForm({ available: true }); 
+        this.router.navigate(['/login']);
+        return;
+      }
 
       const product: Product = {
         id: 0, // backend usually generates this
@@ -30,7 +37,8 @@ export class Add {
         releaseDate: new Date(),
         productAvailable: formValue.available,
         stockQuantity: Number(formValue.quantity),
-        imageUrl: formValue.imageUrl
+        imageUrl: formValue.imageUrl,
+        user: user
       };
 
       this.productService.addProduct(product).subscribe({

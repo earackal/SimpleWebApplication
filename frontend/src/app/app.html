@@ -1,8 +1,26 @@
 <header class="header" id="main-header">
   <div class="top-bar">
-    <button class="home-btn" [routerLink]="['/']">🏠</button>
-    <button [routerLink]="['/add']">Add Product</button>
-    <button class="cart-btn">🛒</button>
+
+    <a class="top-bar-buttons" [routerLink]="['/']">
+        <span class="icon">🏠</span>
+        <span class="icon-text">Home</span>
+    </a>
+    
+    @if(authService.isLoggedIn()){
+      <button [routerLink]="['/add']">Add Product</button>
+    }
+
+    @if(!authService.isLoggedIn()){
+      <a [routerLink]="['/login']" class="top-bar-buttons">
+        <span class="icon">👤</span>
+        <span class="icon-text">Sign In</span>
+      </a>
+    }
+    
+    <a class="top-bar-buttons">
+        <span class="icon">🛒</span>
+        <span class="icon-text">Warenkorb</span>
+    </a>
   </div>
 
   <div class="main-bar">

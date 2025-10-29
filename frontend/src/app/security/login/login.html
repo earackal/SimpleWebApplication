@@ -1,0 +1,39 @@
+<div class="login-container">
+    <div class="login-form">
+        <h1>Sign In</h1>
+            <h3>Geben Sie Ihre Anmeldedaten ein</h3>
+
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+                <label> Benutzername: </label>
+                <input 
+                    type="text" 
+                    name="first" 
+                    placeholder="Geben Sie Ihren Benutzernamen ein" 
+                    required
+                    [(ngModel)]="username">
+
+                <label> Kennwort: </label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Geben Sie Ihr Kennwort ein" 
+                    required
+                    [(ngModel)]="password">
+
+                <div class="submit-button">
+                    <button type="submit" [disabled]="loginForm.invalid">
+                        Einreichen
+                    </button>
+                </div>
+            </form>
+            
+            <p>Nicht registriert?
+                <span [routerLink]="['/register']" class="konto-link">
+                    Erstelle ein Konto
+                </span>
+            </p>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

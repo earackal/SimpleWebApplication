@@ -1,0 +1,29 @@
+.form {
+  display: grid;
+  grid-template-columns: 150px 1fr; /* left column fixed, right column flexible */
+  gap: 10px 20px; /* row gap / column gap */
+  align-items: center;
+  max-width: 600px;
+  margin-top: 30px;
+}
+
+.form-row {
+  display: contents; /* allows grid children to span properly */
+}
+
+label {
+  text-align: left;
+  padding-right: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  grid-column: 2; /* span second column to align with inputs */
+  padding: 8px 16px;
+  cursor: pointer;
+}

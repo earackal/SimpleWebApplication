@@ -1,0 +1,2 @@
+<app-product-edit *ngIf="isOwner" [product]="product"></app-product-edit>
+<app-product-view *ngIf="!isOwner" [product]="product"></app-product-view>

@@ -1,0 +1,30 @@
+<div class="register-container">
+    <div class="register-form">
+        <h1>Profil</h1>
+            <h3>Geben Sie Ihre Registrierungsdaten ein</h3>
+
+            <form #registerForm="ngForm" (ngSubmit)="onSubmit()">
+                <label> Benutzername: </label>
+                <input 
+                    type="text" 
+                    name="first" 
+                    placeholder="Geben Sie Ihren Benutzername ein" 
+                    required
+                    [(ngModel)]="username">
+
+                <label> Kennwort: </label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    placeholder="Geben Sie Ihr Kennwort" 
+                    required
+                    [(ngModel)]="password">
+
+                <div class="submit-button">
+                    <button type="submit" [disabled]="registerForm.invalid">
+                        Submit
+                    </button>
+                </div>
+            </form>
+    </div>
+</div>

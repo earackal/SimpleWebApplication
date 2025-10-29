@@ -32,3 +32,8 @@
 .product-button:active{
   background-color: rgb(239, 239, 239);
 }
+
+.empty-list{
+  font-size: 26px;
+  font-weight: bold;
+}

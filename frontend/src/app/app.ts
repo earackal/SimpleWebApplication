@@ -1,17 +1,17 @@
 import { Component, HostListener} from '@angular/core';
 import { RouterOutlet, RouterLink} from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ProductList } from './product-list/product-list';
-import { Home } from './home/home';
-import { Add } from './add/add';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, CommonModule, ProductList, Home, Add],
+  imports: [RouterOutlet, RouterLink, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App{
+  constructor(public authService: AuthService){}
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const header = document.getElementById('main-header');

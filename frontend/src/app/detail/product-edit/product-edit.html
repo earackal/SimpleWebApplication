@@ -1,0 +1,52 @@
+<h1 style="margin-top: 150px;">Edit Product</h1>
+
+<form *ngIf="product" class="form" #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
+  <div class="form-row">
+    <label for="name">Name</label>
+    <input id="name" name="name" [(ngModel)]="product.name" required>
+  </div>
+
+  <div class="form-row">
+    <label for="description">Description</label>
+    <input id="description" name="description" [(ngModel)]="product.description">
+  </div>
+
+  <div class="form-row">
+    <label for="brand">Brand</label>
+    <input id="brand" name="brand" [(ngModel)]="product.brand" required>
+  </div>
+
+  <div class="form-row">
+    <label for="price">Price</label>
+    <input id="price" name="price" [(ngModel)]="product.price" required>
+  </div>
+
+  <div class="form-row">
+    <label for="category">Category</label>
+    <input id="category" name="category" [(ngModel)]="product.category" required>
+  </div>
+
+  <div class="form-row">
+    <label for="available">Available</label>
+    <select id="available" name="available" [(ngModel)]="product.productAvailable" required>
+      <option [ngValue]="true">Yes</option>
+      <option [ngValue]="false">No</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <label for="quantity">Quantity</label>
+    <input id="quantity" name="quantity" [(ngModel)]="product.stockQuantity" required>
+  </div>
+
+  <div class="form-row">
+    <label for="imageUrl">Image URL</label>
+    <input id="imageUrl" name="imageUrl" [(ngModel)]="product.imageUrl" required>
+  </div>
+
+  <div class="form-row">
+    <button type="submit" [disabled]="editForm.pristine">Update</button>
+    <button type="button" (click)="deleteProduct()">Delete</button>
+  </div>
+</form>
+
