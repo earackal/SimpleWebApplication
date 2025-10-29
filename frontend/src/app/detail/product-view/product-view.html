@@ -1,20 +1,34 @@
-<div class="product-card">
-  <img [src]="product.imageUrl" [alt]="product.name" class="product-image" />
+<div class="product-details-container">
+  <!-- Left: Main Image + Thumbnails -->
+  <div class="image-section">
+    <div class="main-image-wrapper">
+      <img [src]="product.imageUrl" class="main-image">
+    </div>
 
-  <div class="product-info">
-    <h2 class="product-name">{{ product.name }}</h2>
+
+    <span class="stock-badge" 
+          [ngClass]="{'out-of-stock': !product.productAvailable}">
+      {{ product.productAvailable ? 'In Stock' : 'Out of Stock' }}
+    </span>
+  </div>
+
+  <!-- Right: Product Info -->
+  <div class="info-section">
+    <h1 class="product-name">{{ product.name }}</h1>
     <p class="product-brand">Brand: {{ product.brand }}</p>
     <p class="product-category">Category: {{ product.category }}</p>
-    <p class="product-description">{{ product.description }}</p>
-    <p class="product-price">CHF {{ product.price }}</p>
-    <p class="product-release">
-      Released: {{ product.releaseDate | date:'mediumDate' }}
-    </p>
-    <p class="product-stock" [ngClass]="{'out-of-stock': !product.productAvailable}">
-      {{ product.productAvailable ? 'In Stock: ' + product.stockQuantity : 'Out of Stock' }}
-    </p>
-    <button class="buy-button" [disabled]="!product.productAvailable">
-      Buy Now
-    </button>
+    <p class="product-release">Released: {{ product.releaseDate | date:'longDate' }}</p>
+    <p class="product-price">{{ product.price }}</p>
+
+    <div class="description">
+      <h3>Description</h3>
+      <p>{{ product.description }}</p>
+    </div>
+
+    <div class="actions">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" min="1" [max]="product.stockQuantity" [(ngModel)]="quantity">
+      <button class="buy-button" [disabled]="!product.productAvailable">Add to Cart</button>
+    </div>
   </div>
 </div>
